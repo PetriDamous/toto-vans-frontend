@@ -45,9 +45,13 @@ header .site-logo {
   font-size: 25px;
 }
 
+header > nav {
+  padding: 5px 20px;
+}
+
 header a {
   text-decoration: none;
-  color: #4d4d4d;
+  color: #fff;
   font-weight: 600;
   padding: 5px 20px;
 }
