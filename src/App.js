@@ -5,12 +5,12 @@ import { Layout } from "./components";
 
 function App() {
   return (
-    <Layout>
-      <Routes>
+    <Routes>
+      <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-      </Routes>
-    </Layout>
+      </Route>
+    </Routes>
   );
 }
 
