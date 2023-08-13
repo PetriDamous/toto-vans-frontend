@@ -9,8 +9,9 @@ const Header = () => {
         #VANLIFE
       </Link>
       <nav className="d-none d-sm-flex d-md-flex">
+        <Link to="/host">Host</Link>
         <Link to="/about">About</Link>
-        <Link>Vans</Link>
+        <Link to="/vans">Vans</Link>
       </nav>
     </header>
   );
