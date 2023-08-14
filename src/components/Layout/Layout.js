@@ -5,7 +5,10 @@ const Layout = ({ children }) => {
   return (
     <div className="d-flex flex-column min-vh-100">
       <Header />
-      <Outlet />
+      <main>
+        <Outlet />
+      </main>
+
       <Footer />
     </div>
   );
