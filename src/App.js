@@ -14,11 +14,11 @@ import { Layout, HostLayout } from "./components";
 function App() {
   return (
     <Routes>
-      <Route element={<Layout />}>
-        <Route path="/" element={<Home />} />
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/host" element={<HostLayout />}>
-          <Route path="/host/dashboard" element={<DashBoard />} />
+          <Route index element={<DashBoard />} />
           <Route path="/host/income" element={<Income />} />
           <Route path="/host/reviews" element={<Reviews />} />
         </Route>
