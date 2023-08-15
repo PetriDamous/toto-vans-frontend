@@ -1,4 +1,5 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { Button } from "react-bootstrap";
 import data from "../../../data/data.json";
 
 const HostVanDetails = () => {
@@ -8,6 +9,9 @@ const HostVanDetails = () => {
 
   return (
     <>
+      <Link className="my-2" to=".." relative="path">
+        <Button>Back to vans</Button>
+      </Link>
       <h1>{van.name}</h1>
       <h2>Price: {van.price}</h2>
       <p>Catergory: {van.type}</p>
