@@ -8,6 +8,8 @@ import {
   Home,
   Vans,
   VanDetail,
+  HostVans,
+  HostVanDetails,
 } from "./pages";
 import { Layout, HostLayout } from "./components";
 
@@ -21,6 +23,8 @@ function App() {
           <Route index element={<DashBoard />} />
           <Route path="income" element={<Income />} />
           <Route path="reviews" element={<Reviews />} />
+          <Route path="vans" element={<HostVans />} />
+          <Route path="vans/:id" element={<HostVanDetails />} />
         </Route>
         <Route path="vans" element={<Vans />} />
         <Route path="vans/:id" element={<VanDetail />} />

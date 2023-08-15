@@ -7,7 +7,7 @@ const HostLayout = () => {
       <nav className="d-flex justify-content-between">
         <Link to="/host">Dashboard</Link>
         <Link to="/host/income">Income</Link>
-        <Link to="/vans">Vans</Link>
+        <Link to="/host/vans">Vans</Link>
         <Link to="/host/reviews">Reviews</Link>
       </nav>
       <Outlet />
