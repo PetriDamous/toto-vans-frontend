@@ -10,8 +10,10 @@ import {
   VanDetail,
   HostVans,
   HostVanDetails,
+  HostVanPhotos,
+  HostVanPrice,
 } from "./pages";
-import { Layout, HostLayout } from "./components";
+import { Layout, HostLayout, HostVanDetailsLayout } from "./components";
 
 function App() {
   return (
@@ -24,7 +26,11 @@ function App() {
           <Route path="income" element={<Income />} />
           <Route path="reviews" element={<Reviews />} />
           <Route path="vans" element={<HostVans />} />
-          <Route path="vans/:id" element={<HostVanDetails />} />
+          <Route path="vans/:id" element={<HostVanDetailsLayout />}>
+            <Route index element={<HostVanDetails />} />
+            <Route path="pricing" element={<HostVanPrice />} />
+            <Route path="photos" element={<HostVanPhotos />} />
+          </Route>
         </Route>
         <Route path="vans" element={<Vans />} />
         <Route path="vans/:id" element={<VanDetail />} />

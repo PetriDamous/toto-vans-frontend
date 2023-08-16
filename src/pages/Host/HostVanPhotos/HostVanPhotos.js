@@ -1,17 +1,16 @@
 import { useParams } from "react-router-dom";
 import data from "../../../data/data.json";
 
-const HostVanDetails = () => {
+const HostVanPhotos = () => {
   const { id } = useParams();
 
   const van = data.find((van) => van.id === id);
 
   return (
     <>
-      <p>Catergory: {van.type}</p>
-      <p>Description: {van.description}</p>
+      <p>Price: {van.imageUrl}</p>
     </>
   );
 };
 
-export default HostVanDetails;
+export default HostVanPhotos;

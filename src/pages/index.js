@@ -7,3 +7,5 @@ export { default as HostVans } from "./Host/HostVans/HostVans";
 export { default as HostVanDetails } from "./Host/HostVanDetails/HostVanDetails";
 export { default as Vans } from "./Vans/Vans";
 export { default as VanDetail } from "./VanDetail/VanDetail";
+export { default as HostVanPrice } from "./Host/HostVanPrice/HostVanPrice";
+export { default as HostVanPhotos } from "./Host/HostVanPhotos/HostVanPhotos";
