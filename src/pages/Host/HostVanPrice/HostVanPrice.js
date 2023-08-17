@@ -1,14 +1,11 @@
-import { useParams } from "react-router-dom";
-import data from "../../../data/data.json";
+import { useOutletContext } from "react-router-dom";
 
 const HostVanPrice = () => {
-  const { id } = useParams();
-
-  const van = data.find((van) => van.id === id);
+  const { currentVan } = useOutletContext();
 
   return (
     <>
-      <p>Price: {van.price}</p>
+      <p>Price: {currentVan.price}</p>
     </>
   );
 };
