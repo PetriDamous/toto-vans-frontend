@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import Image from "react-bootstrap/Image";
 import data from "../../data/data.json";
 
@@ -8,17 +8,21 @@ const VanDetail = () => {
 
   const { id } = useParams();
 
+  const location = useLocation();
+
   useEffect(() => {
     const van = data.find((van) => van.id === id);
 
     setVan(van);
-  }, []);
+  }, [id]);
 
   if (!van) return "Loading....";
 
+  const search = location.state?.search || "";
+
   return (
     <>
-      <Link to=".." relative="path" className="back-button">
+      <Link to={`..${search}`} relative="path" className="back-button">
         &larr; <span>Back to all vans</span>
       </Link>
       <Image width={600} height={600} src={van.imageUrl} rounded />

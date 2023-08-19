@@ -28,7 +28,7 @@ const Vans = () => {
   return (
     <Container>
       <div className="mb-4">
-        <Select setSearchParams={setSearchParams} />
+        <Select searchParams={searchParams} setSearchParams={setSearchParams} />
       </div>
       <Row>
         {displayVans.map((van) => (
@@ -38,7 +38,13 @@ const Vans = () => {
               <Card.Body>
                 <Card.Title>{van.name}</Card.Title>
                 <Card.Text>{van.description}</Card.Text>
-                <Link to={van.id}>
+                <Link
+                  to={van.id}
+                  state={{
+                    search: `?${searchParams.toString()}`,
+                    type: typeFilter,
+                  }}
+                >
                   <Button variant="primary">Go somewhere</Button>
                 </Link>
               </Card.Body>
@@ -50,23 +56,22 @@ const Vans = () => {
   );
 };
 
-const Select = ({ setSearchParams }) => {
-  const handleRadioChange = (e) => {
-    const typeValue = e.target.labels[0].title;
-
-    if (typeValue === "clear") {
-      setSearchParams({});
-      return;
-    }
-
-    setSearchParams({ type: typeValue });
-  };
+const Select = ({ searchParams, setSearchParams }) => {
+  function handleFilterChange(key, value) {
+    setSearchParams((prevParams) => {
+      if (value === null) {
+        prevParams.delete(key);
+      } else {
+        prevParams.set(key, value);
+      }
+      return prevParams;
+    });
+  }
 
   const raidoCommonProps = {
     inline: true,
     type: "radio",
     name: "vanFilter",
-    onChange: handleRadioChange,
   };
 
   const radioButtons = [
@@ -74,24 +79,39 @@ const Select = ({ setSearchParams }) => {
       id: "simple-1",
       title: "simple",
       label: "Simple",
+      checked: searchParams.get("type") === "simple" || false,
+      onChange() {
+        handleFilterChange("type", "simple");
+      },
       ...raidoCommonProps,
     },
     {
       id: "luxury-1",
       title: "luxury",
       label: "Luxury",
+      checked: searchParams.get("type") === "luxury" || false,
+      onChange() {
+        handleFilterChange("type", "luxury");
+      },
       ...raidoCommonProps,
     },
     {
       id: "rugged-1",
       title: "rugged",
       label: "Rugged",
+      checked: searchParams.get("type") === "rugged" || false,
+      onChange() {
+        handleFilterChange("type", "rugged");
+      },
       ...raidoCommonProps,
     },
     {
       id: "clear-1",
       title: "clear",
       label: "Clear",
+      onChange() {
+        handleFilterChange("type", null);
+      },
       ...raidoCommonProps,
     },
   ];
