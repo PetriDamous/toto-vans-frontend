@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
@@ -38,7 +38,9 @@ const Vans = () => {
               <Card.Body>
                 <Card.Title>{van.name}</Card.Title>
                 <Card.Text>{van.description}</Card.Text>
-                <Button variant="primary">Go somewhere</Button>
+                <Link to={van.id}>
+                  <Button variant="primary">Go somewhere</Button>
+                </Link>
               </Card.Body>
             </Card>
           </Col>
