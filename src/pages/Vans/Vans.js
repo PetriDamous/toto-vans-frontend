@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import { Container } from "react-bootstrap";
-import data from "../../data/data.json";
+import { getVans } from "../../api";
 
 const Vans = () => {
   const [vans, setVans] = useState(null);
@@ -16,7 +16,13 @@ const Vans = () => {
   const typeFilter = searchParams.get("type");
 
   useEffect(() => {
-    setVans(data);
+    async function fetchVans() {
+      const vanData = await getVans();
+
+      setVans(vanData);
+    }
+
+    fetchVans();
   }, []);
 
   if (!vans) return "loading...";
