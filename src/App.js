@@ -6,6 +6,7 @@ import {
   Income,
   Reviews,
   Home,
+  PageNotFound,
   Vans,
   VanDetail,
   HostVans,
@@ -34,6 +35,7 @@ function App() {
         </Route>
         <Route path="vans" element={<Vans />} />
         <Route path="vans/:id" element={<VanDetail />} />
+        <Route path="*" element={<PageNotFound />} />
       </Route>
     </Routes>
   );
