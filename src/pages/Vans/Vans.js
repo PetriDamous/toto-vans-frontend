@@ -41,7 +41,7 @@ const Vans = () => {
                 <Link
                   to={van.id}
                   state={{
-                    search: `?${searchParams.toString()}`,
+                    search: searchParams.toString(),
                     type: typeFilter,
                   }}
                 >

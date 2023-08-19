@@ -19,11 +19,12 @@ const VanDetail = () => {
   if (!van) return "Loading....";
 
   const search = location.state?.search || "";
+  const backTxt = location.state?.type || "all";
 
   return (
     <>
-      <Link to={`..${search}`} relative="path" className="back-button">
-        &larr; <span>Back to all vans</span>
+      <Link to={`..?${search}`} relative="path" className="back-button">
+        &larr; <span>Back to {backTxt} vans</span>
       </Link>
       <Image width={600} height={600} src={van.imageUrl} rounded />
       <h1>{van.name}</h1>
