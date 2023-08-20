@@ -19,6 +19,7 @@ import {
   HostVanPhotos,
   HostVanPrice,
 } from "./pages";
+import { loader as vanLoader } from "./pages/Vans/Vans";
 import { Layout, HostLayout, HostVanDetailsLayout } from "./components";
 
 const router = createBrowserRouter(
@@ -37,7 +38,7 @@ const router = createBrowserRouter(
           <Route path="photos" element={<HostVanPhotos />} />
         </Route>
       </Route>
-      <Route path="vans" element={<Vans />} />
+      <Route path="vans" element={<Vans />} loader={vanLoader} />
       <Route path="vans/:id" element={<VanDetail />} />
       <Route path="*" element={<PageNotFound />} />
     </Route>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams, useLoaderData } from "react-router-dom";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
@@ -8,26 +8,16 @@ import Form from "react-bootstrap/Form";
 import { Container } from "react-bootstrap";
 import { getVans } from "../../api";
 
+export const loader = () => getVans();
+
 const Vans = () => {
-  const [vans, setVans] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const data = useLoaderData();
+
+  const [vans, setVans] = useState(data);
 
   const [searchParams, setSearchParams] = useSearchParams();
 
   const typeFilter = searchParams.get("type");
-
-  useEffect(() => {
-    async function fetchVans() {
-      const vanData = await getVans();
-
-      setVans(vanData);
-      setLoading(false);
-    }
-
-    fetchVans();
-  }, []);
-
-  if (loading) return "loading...";
 
   const displayVans = typeFilter
     ? vans.filter((van) => van.type === typeFilter)
