@@ -10,6 +10,7 @@ import { getVans } from "../../api";
 
 const Vans = () => {
   const [vans, setVans] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -20,12 +21,13 @@ const Vans = () => {
       const vanData = await getVans();
 
       setVans(vanData);
+      setLoading(false);
     }
 
     fetchVans();
   }, []);
 
-  if (!vans) return "loading...";
+  if (loading) return "loading...";
 
   const displayVans = typeFilter
     ? vans.filter((van) => van.type === typeFilter)
