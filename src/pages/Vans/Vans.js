@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Link, useSearchParams, useLoaderData } from "react-router-dom";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -11,9 +10,7 @@ import { getVans } from "../../api";
 export const loader = () => getVans();
 
 const Vans = () => {
-  const data = useLoaderData();
-
-  const [vans, setVans] = useState(data);
+  const vans = useLoaderData();
 
   const [searchParams, setSearchParams] = useSearchParams();
 
