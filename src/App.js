@@ -20,6 +20,7 @@ import {
   HostVanPrice,
 } from "./pages";
 import { loader as vanLoader } from "./pages/Vans/Vans";
+import { loader as vanDetailLoader } from "./pages/VanDetail/VanDetail";
 import { Error, Layout, HostLayout, HostVanDetailsLayout } from "./components";
 
 const router = createBrowserRouter(
@@ -44,7 +45,7 @@ const router = createBrowserRouter(
         errorElement={<Error />}
         loader={vanLoader}
       />
-      <Route path="vans/:id" element={<VanDetail />} />
+      <Route path="vans/:id" element={<VanDetail />} loader={vanDetailLoader} />
       <Route path="*" element={<PageNotFound />} />
     </Route>
   )

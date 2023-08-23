@@ -1,22 +1,15 @@
-import { useEffect, useState } from "react";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useLoaderData } from "react-router-dom";
 import Image from "react-bootstrap/Image";
-import data from "../../data/data.json";
+
+import { getVans } from "../../api";
+
+export const loader = ({ params }) => {
+  return getVans(params.id);
+};
 
 const VanDetail = () => {
-  const [van, setVan] = useState(null);
-
-  const { id } = useParams();
-
+  const van = useLoaderData();
   const location = useLocation();
-
-  useEffect(() => {
-    const van = data.find((van) => van.id === id);
-
-    setVan(van);
-  }, [id]);
-
-  if (!van) return "Loading....";
 
   const search = location.state?.search || "";
   const backTxt = location.state?.type || "all";
