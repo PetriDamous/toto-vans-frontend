@@ -13,14 +13,15 @@ import {
   Home,
   PageNotFound,
   Vans,
+  vansLoader,
+  vanDetailLoader,
   VanDetail,
   HostVans,
   HostVanDetails,
   HostVanPhotos,
   HostVanPrice,
 } from "./pages";
-import { loader as vanLoader } from "./pages/Vans/Vans";
-import { loader as vanDetailLoader } from "./pages/VanDetail/VanDetail";
+
 import { Error, Layout, HostLayout, HostVanDetailsLayout } from "./components";
 
 const router = createBrowserRouter(
@@ -43,7 +44,7 @@ const router = createBrowserRouter(
         path="vans"
         element={<Vans />}
         errorElement={<Error />}
-        loader={vanLoader}
+        loader={vansLoader}
       />
       <Route path="vans/:id" element={<VanDetail />} loader={vanDetailLoader} />
       <Route path="*" element={<PageNotFound />} />

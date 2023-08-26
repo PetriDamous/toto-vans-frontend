@@ -5,6 +5,8 @@ export { default as Income } from "./Host/Income/Income";
 export { default as Reviews } from "./Host/Reviews/Reviews";
 export { default as HostVans } from "./Host/HostVans/HostVans";
 export { default as HostVanDetails } from "./Host/HostVanDetails/HostVanDetails";
+export { loader as vansLoader } from "./Vans/Vans";
+export { loader as vanDetailLoader } from "./VanDetail/VanDetail";
 export { default as PageNotFound } from "./PageNotFound/PageNotFound";
 export { default as Vans } from "./Vans/Vans";
 export { default as VanDetail } from "./VanDetail/VanDetail";
