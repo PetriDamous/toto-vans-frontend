@@ -1,6 +1,5 @@
 import { Link, useLocation, useLoaderData } from "react-router-dom";
 import Image from "react-bootstrap/Image";
-
 import { getVans } from "../../api";
 
 export const loader = ({ params }) => {
