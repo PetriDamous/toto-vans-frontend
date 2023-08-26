@@ -1,8 +1,10 @@
 import { Outlet, Link, useLoaderData } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { getVans } from "../../api";
+import { requireAuth } from "../../utils";
 
-export const loader = ({ params }) => {
+export const loader = async ({ params }) => {
+  await requireAuth();
   return getVans(params.id);
 };
 

@@ -21,6 +21,14 @@ import {
   HostVanPhotos,
   HostVanPrice,
   hostVansLoader,
+  hostVanPhotosLoader,
+  hostVanPriceLoader,
+  hostVanDetailsLoader,
+  dashBoardLoader,
+  incomeLoader,
+  reviewsLoader,
+  loginLoader,
+  Login,
 } from "./pages";
 
 import {
@@ -28,7 +36,7 @@ import {
   Layout,
   HostLayout,
   HostVanDetailsLayout,
-  hostVanDetailsLoader,
+  hostVanDetailLayoutLoader,
 } from "./components";
 
 const router = createBrowserRouter(
@@ -36,19 +44,32 @@ const router = createBrowserRouter(
     <Route path="/" element={<Layout />}>
       <Route index element={<Home />} />
       <Route path="about" element={<About />} />
+      <Route path="login" element={<Login />} loader={loginLoader} />
       <Route path="host" element={<HostLayout />}>
-        <Route index element={<DashBoard />} />
-        <Route path="income" element={<Income />} />
-        <Route path="reviews" element={<Reviews />} />
+        <Route index element={<DashBoard />} loader={dashBoardLoader} />
+        <Route path="income" element={<Income />} loader={incomeLoader} />
+        <Route path="reviews" element={<Reviews />} loader={reviewsLoader} />
         <Route path="vans" element={<HostVans />} loader={hostVansLoader} />
         <Route
           path="vans/:id"
           element={<HostVanDetailsLayout />}
-          loader={hostVanDetailsLoader}
+          loader={hostVanDetailLayoutLoader}
         >
-          <Route index element={<HostVanDetails />} />
-          <Route path="pricing" element={<HostVanPrice />} />
-          <Route path="photos" element={<HostVanPhotos />} />
+          <Route
+            index
+            element={<HostVanDetails />}
+            loader={hostVanDetailsLoader}
+          />
+          <Route
+            path="pricing"
+            element={<HostVanPrice />}
+            loader={hostVanPriceLoader}
+          />
+          <Route
+            path="photos"
+            element={<HostVanPhotos />}
+            loader={hostVanPhotosLoader}
+          />
         </Route>
       </Route>
       <Route
