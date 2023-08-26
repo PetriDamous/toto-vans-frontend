@@ -1,12 +1,12 @@
 import { useOutletContext } from "react-router-dom";
 
 const HostVanDetails = () => {
-  const { currentVan } = useOutletContext();
+  const { van } = useOutletContext();
 
   return (
     <>
-      <p>Catergory: {currentVan.type}</p>
-      <p>Description: {currentVan.description}</p>
+      <p>Catergory: {van.type}</p>
+      <p>Description: {van.description}</p>
     </>
   );
 };

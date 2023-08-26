@@ -1,11 +1,11 @@
 import { useOutletContext } from "react-router-dom";
 
 const HostVanPhotos = () => {
-  const { currentVan } = useOutletContext();
+  const { van } = useOutletContext();
 
   return (
     <>
-      <p>Price: {currentVan.imageUrl}</p>
+      <p>Price: {van.imageUrl}</p>
     </>
   );
 };

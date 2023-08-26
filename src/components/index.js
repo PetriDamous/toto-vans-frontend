@@ -4,3 +4,4 @@ export { default as Layout } from "./Layout/Layout";
 export { default as Header } from "./Header/Header";
 export { default as HostLayout } from "./HostLayout/HostLayout";
 export { default as HostVanDetailsLayout } from "./HostVanDetailsLayout/HostVanDetailsLayout";
+export { loader as hostVanDetailsLoader } from "./HostVanDetailsLayout/HostVanDetailsLayout";

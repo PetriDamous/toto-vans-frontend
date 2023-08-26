@@ -20,9 +20,16 @@ import {
   HostVanDetails,
   HostVanPhotos,
   HostVanPrice,
+  hostVansLoader,
 } from "./pages";
 
-import { Error, Layout, HostLayout, HostVanDetailsLayout } from "./components";
+import {
+  Error,
+  Layout,
+  HostLayout,
+  HostVanDetailsLayout,
+  hostVanDetailsLoader,
+} from "./components";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -33,8 +40,12 @@ const router = createBrowserRouter(
         <Route index element={<DashBoard />} />
         <Route path="income" element={<Income />} />
         <Route path="reviews" element={<Reviews />} />
-        <Route path="vans" element={<HostVans />} />
-        <Route path="vans/:id" element={<HostVanDetailsLayout />}>
+        <Route path="vans" element={<HostVans />} loader={hostVansLoader} />
+        <Route
+          path="vans/:id"
+          element={<HostVanDetailsLayout />}
+          loader={hostVanDetailsLoader}
+        >
           <Route index element={<HostVanDetails />} />
           <Route path="pricing" element={<HostVanPrice />} />
           <Route path="photos" element={<HostVanPhotos />} />

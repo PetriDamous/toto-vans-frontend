@@ -1,11 +1,11 @@
 import { useOutletContext } from "react-router-dom";
 
 const HostVanPrice = () => {
-  const { currentVan } = useOutletContext();
+  const { van } = useOutletContext();
 
   return (
     <>
-      <p>Price: {currentVan.price}</p>
+      <p>Price: {van.price}</p>
     </>
   );
 };
