@@ -13,6 +13,7 @@ import {
   Home,
   PageNotFound,
   Vans,
+  loginAction,
   vansLoader,
   vanDetailLoader,
   VanDetail,
@@ -44,7 +45,12 @@ const router = createBrowserRouter(
     <Route path="/" element={<Layout />}>
       <Route index element={<Home />} />
       <Route path="about" element={<About />} />
-      <Route path="login" element={<Login />} loader={loginLoader} />
+      <Route
+        path="login"
+        element={<Login />}
+        action={loginAction}
+        loader={loginLoader}
+      />
       <Route path="host" element={<HostLayout />}>
         <Route index element={<DashBoard />} loader={dashBoardLoader} />
         <Route path="income" element={<Income />} loader={incomeLoader} />

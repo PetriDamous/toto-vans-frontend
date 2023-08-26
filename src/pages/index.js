@@ -14,6 +14,15 @@ export { default as Login } from "./Login/Login";
 
 /**
  *
+ * Actions
+ *
+ *
+ */
+
+export { action as loginAction } from "./Login/Login";
+
+/**
+ *
  * Loaders
  *
  */
