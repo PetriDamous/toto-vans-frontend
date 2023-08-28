@@ -1,7 +1,20 @@
-import { Link } from "react-router-dom";
-import { Container } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 const Header = () => {
+  const isLoggedIn = localStorage.getItem("loggedIn");
+
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    if (!isLoggedIn) {
+      return navigate("/login");
+    } else {
+      localStorage.clear();
+      navigate("/");
+    }
+  };
+
   return (
     <header className="d-flex justify-content-between">
       <nav className="d-sm-none fs-1">&#9776;</nav>
@@ -12,6 +25,7 @@ const Header = () => {
         <Link to="/host">Host</Link>
         <Link to="/about">About</Link>
         <Link to="/vans">Vans</Link>
+        <Button onClick={handleLogin}>Login</Button>
       </nav>
     </header>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import { useLoaderData, Form } from "react-router-dom";
+import { useLoaderData, Form, redirect } from "react-router-dom";
 import { validateUser } from "../../api";
 
 export const action = async ({ request }) => {
@@ -9,11 +9,16 @@ export const action = async ({ request }) => {
 
   const password = formData.get("password");
 
-  validateUser({ email, password })
-    .then((data) => console.log(data))
-    .catch((error) => console.log(error));
+  try {
+    const user = await validateUser({ email, password });
 
-  return null;
+    if (user) {
+      localStorage.setItem("loggedIn", true);
+      return redirect("/host");
+    }
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const loader = ({ request }) =>
@@ -26,7 +31,7 @@ const Login = () => {
     <div className="login-container">
       <h1>Sign in to your account</h1>
       {message && <h3 className="red">{message}</h3>}
-      <Form className="login-form" method="post">
+      <Form className="login-form" method="post" replace>
         <input name="email" type="email" placeholder="Email address" />
         <input name="password" type="password" placeholder="Password" />
         <button>Log in</button>
