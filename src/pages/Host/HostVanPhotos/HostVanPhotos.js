@@ -1,7 +1,7 @@
 import { useOutletContext } from "react-router-dom";
 import { requireAuth } from "../../../utils";
 
-export const loader = async () => await requireAuth();
+export const loader = async ({ request }) => await requireAuth(request);
 
 const HostVanPhotos = () => {
   const { van } = useOutletContext();
