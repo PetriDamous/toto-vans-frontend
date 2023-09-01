@@ -1,4 +1,11 @@
-import { Link, useSearchParams, useLoaderData } from "react-router-dom";
+import { Suspense } from "react";
+import {
+  Await,
+  defer,
+  Link,
+  useSearchParams,
+  useLoaderData,
+} from "react-router-dom";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
@@ -7,11 +14,24 @@ import Form from "react-bootstrap/Form";
 import { Container } from "react-bootstrap";
 import { getVans } from "../../api";
 
-export const loader = () => getVans();
+export const loader = () => defer({ vans: getVans() });
 
 const Vans = () => {
-  const vans = useLoaderData();
+  const dataPromise = useLoaderData();
 
+  return (
+    <Container>
+      <h1>Vans</h1>
+      <Suspense fallback={<h2>Loading...</h2>}>
+        <Await resolve={dataPromise.vans}>
+          {(vans) => <VansDisplay vans={vans} />}
+        </Await>
+      </Suspense>
+    </Container>
+  );
+};
+
+const VansDisplay = ({ vans }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const typeFilter = searchParams.get("type");
@@ -21,7 +41,7 @@ const Vans = () => {
     : vans;
 
   return (
-    <Container>
+    <>
       <div className="mb-4">
         <Select searchParams={searchParams} setSearchParams={setSearchParams} />
       </div>
@@ -47,7 +67,7 @@ const Vans = () => {
           </Col>
         ))}
       </Row>
-    </Container>
+    </>
   );
 };
 
