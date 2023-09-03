@@ -41,10 +41,11 @@ const VansDisplay = ({ vans }) => {
     : vans;
 
   return (
-    <>
+    <section>
       <div className="mb-4">
         <Select searchParams={searchParams} setSearchParams={setSearchParams} />
       </div>
+
       <Row>
         {displayVans.map((van) => (
           <Col key={van.id} md={6}>
@@ -67,7 +68,7 @@ const VansDisplay = ({ vans }) => {
           </Col>
         ))}
       </Row>
-    </>
+    </section>
   );
 };
 

@@ -1,13 +1,29 @@
-import { Link, useLocation, useLoaderData } from "react-router-dom";
+import { Suspense } from "react";
+import {
+  Await,
+  defer,
+  Link,
+  useLocation,
+  useLoaderData,
+} from "react-router-dom";
 import Image from "react-bootstrap/Image";
 import { getVans } from "../../api";
 
-export const loader = ({ params }) => {
-  return getVans(params.id);
-};
+export const loader = async ({ params }) => defer({ van: getVans(params.id) });
 
 const VanDetail = () => {
-  const van = useLoaderData();
+  const dataPromise = useLoaderData();
+
+  return (
+    <Suspense fallback={"Loading....."}>
+      <Await resolve={dataPromise.van}>
+        {(van) => <VanDetailDisplay van={van} />}
+      </Await>
+    </Suspense>
+  );
+};
+
+const VanDetailDisplay = ({ van }) => {
   const location = useLocation();
 
   const search = location.state?.search || "";
