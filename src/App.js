@@ -55,10 +55,16 @@ const router = createBrowserRouter(
         <Route index element={<DashBoard />} loader={dashBoardLoader} />
         <Route path="income" element={<Income />} loader={incomeLoader} />
         <Route path="reviews" element={<Reviews />} loader={reviewsLoader} />
-        <Route path="vans" element={<HostVans />} loader={hostVansLoader} />
+        <Route
+          path="vans"
+          element={<HostVans />}
+          errorElement={<Error />}
+          loader={hostVansLoader}
+        />
         <Route
           path="vans/:id"
           element={<HostVanDetailsLayout />}
+          errorElement={<Error />}
           loader={hostVanDetailLayoutLoader}
         >
           <Route
@@ -84,7 +90,12 @@ const router = createBrowserRouter(
         errorElement={<Error />}
         loader={vansLoader}
       />
-      <Route path="vans/:id" element={<VanDetail />} loader={vanDetailLoader} />
+      <Route
+        path="vans/:id"
+        element={<VanDetail />}
+        errorElement={<Error />}
+        loader={vanDetailLoader}
+      />
       <Route path="*" element={<PageNotFound />} />
     </Route>
   )
